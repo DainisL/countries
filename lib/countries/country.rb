@@ -33,7 +33,7 @@ class ISO3166::Country
 
   AttrReaders.each do |meth|
     define_method meth do
-      @data[meth.to_s]
+      data[meth.to_s]
     end
   end
 
@@ -44,19 +44,15 @@ class ISO3166::Country
   end
 
   def valid?
-    not (@data.nil? or @data.empty?)
-  end
-
-  def ==(other)
-    self.data == other.data
+    not (data.nil? or data.empty?)
   end
 
   def currency
-    ISO4217::Currency.from_code(@data['currency'])
+    ISO4217::Currency.from_code(data['currency'])
   end
 
   def currency_code
-    @data['currency']
+    data['currency']
   end
 
   def subdivisions
@@ -70,11 +66,11 @@ class ISO3166::Country
   end
 
   def in_eu?
-    @data['eu_member'].nil? ? false : @data['eu_member']
+    data['eu_member'].nil? ? false : data['eu_member']
   end
 
   def to_s
-    @data['name']
+    data['name']
   end
 
   class << self

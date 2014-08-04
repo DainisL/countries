@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe ISO3166::Country do
@@ -70,7 +69,8 @@ describe ISO3166::Country do
   end
 
   it 'should be identical to itself' do
-    country.should == ISO3166::Country.search('US')
+    result = ISO3166::Country.search('US')
+    country.data.should == result.data
   end
 
   it 'should return language' do
