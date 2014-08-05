@@ -69,8 +69,7 @@ describe ISO3166::Country do
   end
 
   it 'should be identical to itself' do
-    result = ISO3166::Country.search('US')
-    country.data.should == result.data
+    country.data.should == ISO3166::Country.search('US').data
   end
 
   it 'should return language' do

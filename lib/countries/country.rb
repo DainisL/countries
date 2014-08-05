@@ -119,6 +119,15 @@ class ISO3166::Country
       end
     end
 
+    def ==(other)
+      (@name == other.name)
+      if other.class == ISO3166::Country
+       (data == other.data)
+      else
+        super
+      end
+    end
+    
     protected
     def parse_attributes(attribute, val)
       raise "Invalid attribute name '#{attribute}'" unless AttrReaders.include?(attribute.to_sym)
